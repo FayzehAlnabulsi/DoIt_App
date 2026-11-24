@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 import 'Screens/intro_screen.dart';
 import 'Screens/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:do_it/provider/provider_class.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => ProviderClass())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,17 +23,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       key: key,
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData(scaffoldBackgroundColor: AppColor.bac),
-      // localizationsDelegates: context.localizationDelegates,
-      // supportedLocales: context.supportedLocales,
-      //locale: context.locale,
       home: ScreenUtilInit(
         minTextAdapt: true,
         designSize: const Size(300, 400),
         splitScreenMode: true,
         builder: (context, __) {
           return SplashScreen();
-        },)
+        },
+      ),
     );
   }
 }

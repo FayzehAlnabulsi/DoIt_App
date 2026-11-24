@@ -12,4 +12,8 @@ abstract class AppConstants {
 
   ///urls
   static const String _baseUrl = 'https://doit-f3hb.onrender.com/api';
+
+  ///Auth
+  static const String logIn = '$_baseUrl/User';
+  static const String signUp = '$_baseUrl/Users';
 }
